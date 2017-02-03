@@ -18,5 +18,6 @@ module.exports = angular.module('ngReactExample.comment', [
     controller: function($element) {
         const $ctrl = this;
         $ctrl.$onChanges = () => render($element[0], { comment: $ctrl.comment });
+        $ctrl.$onDestroy = () => ReactDOM.unmountComponentAtNode($element[0]);
     }
 });
