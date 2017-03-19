@@ -1,8 +1,8 @@
 export default class CommentService {
     constructor() {
         this.comments = [
-            { text: 'First comment' },
-            { text: 'Second comment' }
+            { text: 'First comment', authorId: 1 },
+            { text: 'Second comment', authorId: 2 }
         ];
     }
 

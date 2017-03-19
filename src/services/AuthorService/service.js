@@ -1,8 +1,8 @@
 export default class AuthorService {
     constructor() {
         this.authors = {
-            [1]: 'John Doe',
-            [2]: 'Eddart Stark'
+            '1': 'John Doe',
+            '2': 'Eddart Stark'
         };
     }
 
