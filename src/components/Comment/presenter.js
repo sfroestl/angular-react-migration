@@ -1,9 +1,12 @@
 import React from 'react';
+import { getAngularService } from '../../services/AngularService';
 
-const Comment = (props) => {
+const Comment = ({ comment }) => {
+    const { text, authorId } = comment
+    const AuthorService = getAngularService('AuthorService');
     return (
         <div>
-            { props.comment.text }
+            { text } | Author: { AuthorService.getAuthor(authorId) }
         </div>
     );
 };
