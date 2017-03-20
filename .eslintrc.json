@@ -1,0 +1,16 @@
+{
+    "extends": "airbnb",
+    "plugins": [
+        "react",
+        "jsx-a11y",
+        "import"
+    ],
+    "rules": {
+        "indent": ["error", 4],
+        "arrow-parens": ["off"],
+        "react/jsx-filename-extension": ["error", { "extensions": [".js", ".jsx"] }],
+        "react/jsx-indent": ["off"],
+        "react/jsx-curly-spacing": ["error", "always"],
+        "react/forbid-prop-types": ["off"]
+    }
+}
