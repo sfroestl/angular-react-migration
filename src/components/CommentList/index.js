@@ -1,16 +1,6 @@
 import angular from 'angular';
+import { reactToAngularComponent } from '../../services/AngularReactHelper';
+import CommentList from './presenter';
 
 module.exports = angular.module('ngReactExample.commentList', [
-    require('../../services/CommentService').name,
-    require('../Comment').name,
-]).component('commentList', {
-    template:`
-        <div>
-            <comment ng-repeat="comment in $ctrl.comments" comment="comment"></comment>
-        </div>
-    `,
-    controller: function(CommentService) {
-        const $ctrl = this;
-        $ctrl.comments = CommentService.getComments();
-    }
-});
+]).component('commentList', reactToAngularComponent(CommentList));

@@ -1,23 +1,19 @@
-import angular from 'angular';
-import React from 'react';
-import ReactDOM from 'react-dom';
-import Comment from './presenter';
+import React, { PropTypes } from 'react';
 
-const render = (element, props) => {
-    ReactDOM.render(
-        <Comment { ...props } />,
-        element
-    );
-}
+const Comment = ({ comment, author }) => (
+    <div>
+        { comment.text } | Author: { author.name }
+    </div>
+);
 
-module.exports = angular.module('ngReactExample.comment', [
-]).component('comment', {
-    bindings: {
-        comment: '<',
-    },
-    controller: function($element) {
-        const $ctrl = this;
-        $ctrl.$onChanges = () => render($element[0], { comment: $ctrl.comment });
-        $ctrl.$onDestroy = () => ReactDOM.unmountComponentAtNode($element[0]);
-    }
-});
+
+Comment.propTypes = {
+    comment: PropTypes.shape({
+        text: PropTypes.string,
+    }).isRequired,
+    author: PropTypes.shape({
+        name: PropTypes.string,
+    }).isRequired,
+};
+
+export default Comment;

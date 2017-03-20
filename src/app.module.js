@@ -3,16 +3,20 @@ import angular from 'angular';
 const setupRoutes = ($stateProvider) => {
     $stateProvider
         .state('home', {
-        url: '/',
-        resolve: {
-            comments: (CommentService) => CommentService.queryComments(),
-            authors: (AuthorService) => AuthorService.queryAuthors(),
-        },
-        template: `
-            <h3>Hello World!</h3>
-            <comment-list></comment-list>
-        `,
-    });
+            url: '/',
+            resolve: {
+                comments: (CommentService) => CommentService.queryComments(),
+                authors: (AuthorService) => AuthorService.queryAuthors(),
+            },
+            controllerAs: '$ctrl',
+            controller: function (comments) {
+                this.comments = comments;
+            },
+            template: `
+                <h3>Hello World!</h3>
+                <comment-list comments="$ctrl.comments"></comment-list>
+            `,
+        });
 };
 
 const enableHtml5Mode = ($locationProvider) => {
@@ -25,6 +29,6 @@ module.exports = angular.module('ngReactExample', [
     require('./services/AuthorService').name,
     require('./components/CommentList').name,
 ])
-.config(enableHtml5Mode)
-.config(setupRoutes);
+    .config(enableHtml5Mode)
+    .config(setupRoutes);
 
