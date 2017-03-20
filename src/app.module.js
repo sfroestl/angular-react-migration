@@ -4,6 +4,9 @@ const setupRoutes = ($stateProvider) => {
     $stateProvider
         .state('home', {
         url: '/',
+        resolve: {
+            comments: (CommentService) => CommentService.queryComments()
+        },
         template: `
             <h3>Hello World!</h3>
             <comment-list></comment-list>
@@ -16,8 +19,9 @@ const enableHtml5Mode = ($locationProvider) => {
 };
 
 module.exports = angular.module('ngReactExample', [
-  require('angular-ui-router'),
-  require('./components/CommentList').name,
+    require('angular-ui-router'),
+    require('./services/CommentService').name,
+    require('./components/CommentList').name,
 ])
 .config(enableHtml5Mode)
 .config(setupRoutes);

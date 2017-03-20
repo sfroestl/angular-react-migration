@@ -1,0 +1,6 @@
+{
+    "comments": [
+        { "text": "First comment", "authorId": "1" },
+        { "text": "Second comment", "authorId": "2" }
+    ]
+}

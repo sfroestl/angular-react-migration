@@ -1,16 +1,19 @@
 export default class CommentService {
-    constructor() {
-        this.comments = [
-            { text: 'First comment', authorId: 1 },
-            { text: 'Second comment', authorId: 2 }
-        ];
+    constructor($http) {
+        this.$http = $http;
+    }
+
+    queryComments() {
+        return this.$http.get('http://localhost:3004/comments').then((resp) => {
+            this.setComments(resp.data)
+        });
     }
 
     getComments() {
         return this.comments
     }
 
-    setComments(comments){
+    setComments(comments) {
         this.comments = comments
     }
 }
