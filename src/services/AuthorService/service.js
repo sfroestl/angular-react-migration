@@ -1,3 +1,5 @@
+const AUTHOR_URI = 'http://localhost:3004/authors'
+
 export default class AuthorService {
 
     static $inject = ['$http'];
@@ -7,16 +9,17 @@ export default class AuthorService {
     }
 
     queryAuthors() {
-        return this.$http.get('http://localhost:3004/authors').then((resp) => {
-            this.setAuthors(resp.data)
-        });
+        return this.$http
+            .get(AUTHOR_URI)
+            .then((resp) => this.setAuthors(resp.data));
     }
 
     setAuthors(authors) {
-        authors.reduce((authorMap, author) => {
+        this.authors = authors.reduce((authorMap, author) => {
             authorMap[author.id] = author
             return authorMap;
         }, this.authors);
+        return authors;
     }
 
     getAuthor(id) {
