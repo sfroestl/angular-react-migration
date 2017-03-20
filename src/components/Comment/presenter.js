@@ -4,9 +4,10 @@ import { getAngularService } from '../../services/AngularService';
 const Comment = ({ comment }) => {
     const { text, authorId } = comment
     const AuthorService = getAngularService('AuthorService');
+    const author = AuthorService.getAuthor(authorId);
     return (
         <div>
-            { text } | Author: { AuthorService.getAuthor(authorId) }
+            { text } | Author: { author.name }
         </div>
     );
 };

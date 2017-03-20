@@ -1,4 +1,6 @@
 export default class CommentService {
+
+    static $inject = ['$http'];
     constructor($http) {
         this.$http = $http;
     }

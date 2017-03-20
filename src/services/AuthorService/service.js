@@ -1,9 +1,22 @@
 export default class AuthorService {
-    constructor() {
-        this.authors = {
-            '1': 'John Doe',
-            '2': 'Eddart Stark'
-        };
+
+    static $inject = ['$http'];
+    constructor($http) {
+        this.$http = $http;
+        this.authors = {};
+    }
+
+    queryAuthors() {
+        return this.$http.get('http://localhost:3004/authors').then((resp) => {
+            this.setAuthors(resp.data)
+        });
+    }
+
+    setAuthors(authors) {
+        authors.reduce((authorMap, author) => {
+            authorMap[author.id] = author
+            return authorMap;
+        }, this.authors);
     }
 
     getAuthor(id) {
