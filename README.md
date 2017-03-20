@@ -5,6 +5,15 @@ This is an example app demonstrating a bridge from AngularJS to React. Read more
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
-start: `npm start`
-test: `npm test`
-build: `npm run build`
+### Development
+Start local dev:
+```bash
+$ npm start
+```
+To start the mock API [json-server](https://github.com/typicode/json-server) run:
+
+```bash
+$ npm run api
+```
+
+
