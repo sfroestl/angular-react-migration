@@ -1,0 +1,10 @@
+{
+    "comments": [
+        { "text": "First comment", "authorId": "a1" },
+        { "text": "Second comment", "authorId": "a2" }
+    ],
+    "authors": [
+        { "id": "a1", "name": "John Doe" },
+        { "id": "a2", "name": "Eddart Stark" }
+    ]
+}
